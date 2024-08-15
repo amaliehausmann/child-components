@@ -4,17 +4,25 @@ import { Card } from './components/Card/Card'
 import { CardHeader } from './components/Card/CardHeader/CardHeader'
 import { CardBody } from './components/Card/CardBody/CardBody'
 import { CardFooter } from './components/Card/CardFooter/CardFooter'
+import { CardImage } from './components/Card/CardImage/CardImage'
+import { cards } from '../src/data/data.js'
+
 
 function App() {
+
 
   return (
     <>
     <Wrapper title='Wrapper Title' subtitle='Wrapper subtitle'>
-    <Card>
-      <CardHeader title='card header'></CardHeader>
-      <CardBody textContent='Text content på card'></CardBody>
-      <CardFooter footerContent = 'Footer content på card'></CardFooter>
-    </Card>
+    {cards.map((item) => (
+        <Card key={item.title}>
+          <CardHeader title={item.title}></CardHeader>
+          <CardImage image={item.image} alt="" /> 
+          <CardBody textContent={item.textContent}></CardBody>
+          <CardFooter footerContent={item.footerContent}></CardFooter>
+        </Card>
+      )
+        )}
     </Wrapper>
     </>
   )
